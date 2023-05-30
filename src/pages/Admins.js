@@ -17,6 +17,7 @@ const Admins = () => {
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(["10"])
   const [pageCount, setPageCount] = useState(1);
+  const [file, setFile] = useState()
   const handlePageClick = (data) => {
     setPageCount(data.selected + 1)
     window.scrollTo({
@@ -43,8 +44,7 @@ const Admins = () => {
     <tr key={element.id}>
       <td>{element.id}</td>
       <td>
-        <input type='file' id='actual-button' hidden />
-        <label for='actual-button'>{element.image ? <Avatar src={element.image} alt="it's me" /> : <Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}</label>
+        {element.image ? <Avatar src={element.image} alt="it's me" /> : <Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}
       </td>
       <td>{element.email}</td>
       <td>{element.phone}</td>
