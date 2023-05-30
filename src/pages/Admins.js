@@ -11,6 +11,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import AdminsDeleteModal from '../Modals/Admins/AdminsDeleteModal'
 import AdminsCreateModal from '../Modals/Admins/AdminsCreaeModal'
 import AdminsEditModal from '../Modals/Admins/AdminsEditModal'
+import { Avatar } from '@mantine/core';
 const Admins = () => {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
@@ -41,6 +42,7 @@ const Admins = () => {
   const rows = data && data.map((element) => (
     <tr key={element.id}>
       <td>{element.id}</td>
+      <td>{<Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}</td>
       <td>{element.email}</td>
       <td>{element.phone}</td>
       <td>{element.role}</td>
@@ -89,6 +91,7 @@ const Admins = () => {
               <thead>
                 <tr>
                   <th>Id</th>
+                  <th>Image</th>
                   <th>Email</th>
                   <th>Phone</th>
                   <th>Role</th>
