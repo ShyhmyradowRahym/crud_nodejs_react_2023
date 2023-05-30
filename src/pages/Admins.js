@@ -42,7 +42,7 @@ const Admins = () => {
   const rows = data && data.map((element) => (
     <tr key={element.id}>
       <td>{element.id}</td>
-      <td>{<Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}</td>
+      <td>{element.image ? <Avatar src={element.image} alt="it's me" /> : <Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}</td>
       <td>{element.email}</td>
       <td>{element.phone}</td>
       <td>{element.role}</td>
