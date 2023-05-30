@@ -34,7 +34,7 @@ const Admins = () => {
     setData(res.data)
     setLoading(false)
   }
- 
+
   const [opened, setOpened] = useState(false);
   const [id, setId] = useState()
   const [admin, setAdmin] = useState()
@@ -42,7 +42,10 @@ const Admins = () => {
   const rows = data && data.map((element) => (
     <tr key={element.id}>
       <td>{element.id}</td>
-      <td>{element.image ? <Avatar src={element.image} alt="it's me" /> : <Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}</td>
+      <td>
+        <input type='file' id='actual-button' hidden />
+        <label for='actual-button'>{element.image ? <Avatar src={element.image} alt="it's me" /> : <Avatar src="https://imgv3.fotor.com/images/homepage-feature-card/Upload-an-image.jpg" alt="it's me" />}</label>
+      </td>
       <td>{element.email}</td>
       <td>{element.phone}</td>
       <td>{element.role}</td>
@@ -96,8 +99,8 @@ const Admins = () => {
                   <th>Phone</th>
                   <th>Role</th>
                   <th>Username</th>
-                  <th style={{textAlign:'center'}}>Edit</th>
-                  <th style={{textAlign:'center'}}>Delete</th>
+                  <th style={{ textAlign: 'center' }}>Edit</th>
+                  <th style={{ textAlign: 'center' }}>Delete</th>
                 </tr>
               </thead>
               <tbody>{rows}</tbody>
