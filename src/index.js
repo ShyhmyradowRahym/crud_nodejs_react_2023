@@ -8,13 +8,18 @@ import { store } from './store';
 import { BrowserRouter } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
+import { NotificationsProvider } from '@mantine/notifications';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <MantineProvider>
         <ModalsProvider labels={{ confirm: 'Submit', cancel: 'Cancel' }}>
-          <App />
+          <NotificationsProvider>
+            <App />
+          </NotificationsProvider>
         </ModalsProvider>
       </MantineProvider>
     </BrowserRouter>

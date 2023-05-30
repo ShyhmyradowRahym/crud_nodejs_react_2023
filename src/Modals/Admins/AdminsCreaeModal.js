@@ -34,14 +34,19 @@ const AdminsCreateModal = ({ opened, setOpened, forceUpdate }) => {
         })
     };
     const handleCreate = (value) => {
-        service.post('/admin/create-operator', value).
-            then(res => { if (res.status === 201) { setOpened(false); forceUpdate() } }).
+        service.post('/api/create-operator', value).
+            then(res => {
+                if (res.status === 200) {
+                    setOpened(false);
+                    forceUpdate()
+                }
+            }).
             catch(err => {
                 notify(err.response.data)
                 // setError(err.response.data)
             })
     }
-    return ( 
+    return (
         <div className='w-full'>
             <ToastContainer />
             <Modal

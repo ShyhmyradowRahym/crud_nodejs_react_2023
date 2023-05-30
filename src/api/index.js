@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { getCookie } from '../Cookies';
 
-const baseURL = 'http://95.85.127.250:3000';
+const baseURL = 'http://localhost:5000';
+axios.defaults.withCredentials=true
 const service = axios.create({ baseURL });
-
 service.interceptors.request.use(
     res => {
-        res.headers['Authorization'] = 'Bearer ' + localStorage.getItem('access_token')
+        res.headers['Authorization'] = 'Bearer ' + getCookie('token')
         return res;
     },
     err => {

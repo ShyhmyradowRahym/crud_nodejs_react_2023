@@ -4,7 +4,7 @@ import service from '../../api'
 
 const AdminsDeleteModal = ({ id, opened, setOpened, forceUpdate }) => {
     const handleDelete = () => {
-        service.delete(`/admin/delete-operator/${id}`)
+        service.delete(`/api/delete-operator/${id}`)
             .then(res => { res.status === 200 && setOpened(false); forceUpdate() })
     }
     return (

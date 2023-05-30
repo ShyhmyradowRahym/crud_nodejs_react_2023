@@ -5,8 +5,18 @@ import { FiUsers } from 'react-icons/fi'
 import { MdOutlineLogout } from 'react-icons/md'
 import { BiMenu } from 'react-icons/bi'
 import { IoMdClose } from 'react-icons/io'
+import service from '../api'
 const NavBar = ({ toggleMenu, setToggleMenu, children }) => {
     const navigate = useNavigate()
+    const handleLogout=()=>{
+        service.get('/logout').then(
+            res=>{
+                navigate('/login')
+                alert(res.data.message)
+                localStorage.clear()
+            }
+        ).catch(err=>console.log(err))
+    }
     return (
         <div className='flex w-full'>
             <div className={`${toggleMenu ? 'md:w-60' : 'w-20'} scrolll flex flex-row h-screen  text-gray-800 bg-indigo-500 relative`}>
@@ -36,7 +46,7 @@ const NavBar = ({ toggleMenu, setToggleMenu, children }) => {
                                 </Link>
                             </li>
                         </ul>
-                        <li onClick={() => { localStorage.clear(); navigate('/login') }}
+                        <li onClick={() =>  handleLogout()}
                             className={`cursor-pointer absolute bottom-0 w-full flex flex-row items-center ${!toggleMenu ? "justify-center" : "justify-start"} h-10 px-3 hover:bg-white hover:text-black text-gray-300`}>
                             <MdOutlineLogout className='md:text-2xl text-xl' />
                             {toggleMenu && <p className="ml-3 md:block hidden">Logout</p>}

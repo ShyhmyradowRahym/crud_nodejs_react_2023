@@ -1,35 +1,43 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import service from '../api/index'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { setCookie } from '../Cookies';
 const Login = () => {
-    const [login, setLogin] = useState('')
+    const [email, setLogin] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
     const navigate = useNavigate()
+
     const handleLogin = () => {
-        console.log(login,' ',password);
-        if (login==='Rahym' && password==250399) {
-            navigate('/')
-        }
-        // service.post('admin/login', { login, password }).then(
-        //     res => {
-        //         if (res.status === 201) {
-        //             window.localStorage.setItem('access_token', res.data.accessToken)
-        //             window.localStorage.setItem('refresh_token', res.data.refreshToken)
-        //             navigate('/')
-        //         }
-        //     }
-        // ).catch(err => {
-        //     setError(err.response.data)
-        //     console.log(err.response.data);
-        // })
+        // console.log(login,' ',password);
+        // if (login==='Rahym' && password==250399) {
+        //     navigate('/')
+        // }
+        service.post('/login', { email, password }).then(
+            res => {
+               
+                if (res.data.message === "Success") {
+                    navigate('/')
+                    toast.success(res.data.message, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+                else{
+                    toast.error(res.data.message, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                }
+            }
+        )
     }
     return (
         <div className="fixed w-full right-0 top-0 h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{
-            background: '#2c3e50',
+            // background: '#2c3e50',
             background: 'linear-gradient(to bottom, #3498db, #2c3e50)'
 
         }}>
+            <ToastContainer />
             <div className="max-w-xs w-full bg-white p-5 space-y-6">
                 <div>
                     <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt="Workflow" />

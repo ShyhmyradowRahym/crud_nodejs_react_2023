@@ -12,7 +12,7 @@ import AdminsDeleteModal from '../Modals/Admins/AdminsDeleteModal'
 import AdminsCreateModal from '../Modals/Admins/AdminsCreaeModal'
 import AdminsEditModal from '../Modals/Admins/AdminsEditModal'
 const Admins = () => {
-  // const [data, setData] = useState()
+  const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(["10"])
   const [pageCount, setPageCount] = useState(1);
@@ -24,122 +24,16 @@ const Admins = () => {
     })
   }
   const [valueReducer, forceUpdate] = useReducer(x => x + 1, 0)
-  // useEffect(() => {
-  //   getData();
-  //   setLoading(true)
-  // }, [valueReducer])
-  // const getData = async () => {
-  //   const res = await service.get('/admin/admins');
-  //   setData(res.data)
-  //   setLoading(false)
-  // }
-  const data = [
-    {
-      id: 1,
-      email: 'shyhmyradow99@gmail.com',
-      phone: '+993333333',
-      role: 'admin',
-      username: 'Rahym'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    },
-    {
-      id:2,
-      email:'example@gmail.com',
-      phone:'+993222333',
-      role:'mod',
-      username:'Begenc'
-    }
-  ]
+  useEffect(() => {
+    getData();
+    setLoading(true)
+  }, [valueReducer])
+  const getData = async () => {
+    const res = await service.get('/api/users');
+    setData(res.data)
+    setLoading(false)
+  }
+ 
   const [opened, setOpened] = useState(false);
   const [id, setId] = useState()
   const [admin, setAdmin] = useState()

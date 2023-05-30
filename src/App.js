@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
 import Login from './pages/Login';
@@ -39,17 +39,17 @@ function App() {
       {progress && <TopBarProgress />}
       <div className='flex justify-between'>
         <NavBar toggleMenu={toggleMenu} setToggleMenu={setToggleMenu}>
-        <div className='w-full bg-gray-50'>
-          <Routes>
-            {/* <Route element={<PrivateRoute />}> */}
-              <Route element={<Dashboard />} path='/dashboard' />
-              <Route element={<Dashboard />} path='/' />
-              <Route element={<Admins />} path='/admins' />
-            {/* </Route> */}
-            <Route element={<NotFound />} path='/*' />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-        </div>
+          <div className='w-full bg-gray-50'>
+            <Routes>
+              <Route element={<PrivateRoute />}>
+                <Route element={<Dashboard />} path='/dashboard' />
+                <Route element={<Dashboard />} path='/' />
+                <Route element={<Admins />} path='/admins' />
+              </Route>
+              <Route element={<NotFound />} path='*' />
+              <Route path='/login' element={<Login />} />
+            </Routes>
+          </div>
         </NavBar>
       </div>
     </div>

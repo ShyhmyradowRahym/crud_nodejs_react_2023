@@ -35,7 +35,7 @@ const AdminsEditModal = ({ opened, setOpened, forceUpdate, admin }) => {
         })
     };
     const handleCreate = (value) => {
-        service.patch(`/admin/edit-operator`, value).
+        service.put(`/api/edit-operator`, value).
             then(res => { if (res.status === 200) { setOpened(false); forceUpdate() } }).
             catch(err => {
                 notify(err.response.data)
